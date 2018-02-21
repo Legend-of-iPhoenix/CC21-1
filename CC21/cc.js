@@ -2,7 +2,7 @@ var c = ['CE', 'CX', 'Prime', '84+', '89T'],
     cData = [],
     keyBind = [];
 var index = 0;
-var topBorder, bottomBorder, leftBorder, rightBorder, borderGroup;
+var topBorder, bottomBorder, leftBorder, rightBorder, borderGroup, wall;
 var SCENE_W = 1000;
 var SCENE_H = 1000;
 
@@ -10,6 +10,7 @@ function preload() {
     for (var i = 0; i < 5; i++) {
         cData.push(loadImage('assets/' + c[i] + ".png"));
     }
+    wall = loadImage('assets/wall.png');
 }
 
 function setup() {
@@ -20,10 +21,17 @@ function setup() {
     cc.friction = 0.01;
 
     borderGroup = new Group();
-    (topBorder = createSprite(0, 0, SCENE_W, 50)).addImage;
-    (bottomBorder = createSprite(0, SCENE_H, SCENE_W, 50);
-    (rightBorder = createSprite(SCENE_W / 2, SCENE_H / 2, 50, SCENE_H);
-    (leftBorder = createSprite(-SCENE_W / 2, SCENE_H / 2, 50, SCENE_H);
+    (topBorder = createSprite(0, 0, SCENE_W, 50)).addImage('wall', wall);
+/*     topBorder.scale = 10; */
+    (bottomBorder = createSprite(0, SCENE_H, SCENE_W, 50)).addImage('wall', wall);
+    bottomBorder.rotation = 180;
+/*     bottomBorder.scale = 10; */
+    (rightBorder = createSprite(SCENE_W / 2, SCENE_H / 2, 50, SCENE_H)).addImage('wall', wall);
+    rightBorder.rotation = 90;
+/*     rightBorder.scale = 10; */
+    (leftBorder = createSprite(-SCENE_W / 2, SCENE_H / 2, 50, SCENE_H)).addImage('wall', wall);
+    leftBorder.rotation = 270;
+/*     leftBorder.scale = 10; */
     borderGroup.add(topBorder);
     borderGroup.add(bottomBorder);
     borderGroup.add(rightBorder);
