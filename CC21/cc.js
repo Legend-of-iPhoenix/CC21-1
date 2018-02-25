@@ -41,20 +41,20 @@ function setup() {
     rightBorder.immovable = true;
     leftBorder.immovable = true;
 
-    keyBind = ['W', 'A', 'S', 'D', 'SHIFT'];
+    keyBind = ['W', 'A', 'S', 'D', 'SHIFT', 'UP', 'LEFT', 'DOWN', 'RIGHT'];
     noCursor();
 }
 
 function draw() {
     background(0);
-
-    if (keyDown(keyBind[1]))
+    
+    if (keyDown(keyBind[1]) || keyDown(keyBind[6]))
         cc.rotation -= 4;
-    if (keyDown(keyBind[3]))
+    if (keyDown(keyBind[3]) || keyDown(keyBind[8]))
         cc.rotation += 4;
-    if (keyDown(keyBind[0]))
+    if (keyDown(keyBind[0]) || keyDown(keyBind[5]))
         cc.addSpeed(0.15, cc.rotation);
-    if (keyDown(keyBind[2]))
+    if (keyDown(keyBind[2]) || keyDown(keyBind[7]))
         cc.addSpeed(-0.10, cc.rotation);
 
     if (keyDown(keyBind[4])) {
